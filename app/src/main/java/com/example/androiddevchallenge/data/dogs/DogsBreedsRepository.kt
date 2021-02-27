@@ -1,9 +1,9 @@
 package com.example.androiddevchallenge.data.dogs
 
-fun getDogBreedById(id:Int) = getDogsSpreadList().find { it.id == id }
+fun getDogBreedById(id:Int) = getDogsBreedList().find { it.id == id }
 
 // clone of https://api.thedogapi.com/v1/images/search?limit=10&page=0&order=Desc response
-fun getDogsSpreadList() = listOf(
+fun getDogsBreedList() = listOf(
     DogsBreed(
         id = 50,
         name = "Border Collie",

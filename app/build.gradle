@@ -78,4 +78,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    def compose_navigation = '1.0.0-alpha08'
+    implementation "androidx.navigation:navigation-compose:$compose_navigation"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.6.0"
 }
