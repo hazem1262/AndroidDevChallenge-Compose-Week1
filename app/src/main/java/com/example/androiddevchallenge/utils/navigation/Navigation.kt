@@ -1,7 +1,9 @@
 package com.example.androiddevchallenge.utils.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import com.example.androiddevchallenge.ui.screens.details.DetailsScreen
 import com.example.androiddevchallenge.ui.screens.list.DogsBreedListScreen
 import com.example.androiddevchallenge.utils.navigation.Route.*
 
@@ -18,8 +20,15 @@ fun Navigation(){
             )
         }
 
-        composable(route = DogsSpreedDetailsRoute.tag){
-
+        composable(route = "${DogsSpreedDetailsRoute.tag}/{breedId}",
+            arguments = listOf(navArgument("breedId") { type = NavType.IntType })){
+                navBackStackEntry ->
+            navBackStackEntry.arguments?.getInt("breedId")?.let { breedId ->
+                DetailsScreen(
+                    breedId = breedId,
+                    onNavigateBack = { navController.popBackStack() }
+                )
+            }
         }
     }
 }
