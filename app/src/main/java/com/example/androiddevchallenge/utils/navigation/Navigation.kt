@@ -1,28 +1,49 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.utils.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.ui.screens.details.DetailsScreen
 import com.example.androiddevchallenge.ui.screens.list.DogsBreedListScreen
-import com.example.androiddevchallenge.utils.navigation.Route.*
 
 @Composable
-fun Navigation(){
+fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = DogsSpreedListRoute.tag){
+    NavHost(navController = navController, startDestination = Route.DogsSpreedListRoute.tag) {
 
-        composable(route = DogsSpreedListRoute.tag){
+        composable(route = Route.DogsSpreedListRoute.tag) {
             DogsBreedListScreen(
                 onBreedClick = {
-                    breedId -> navController.navigate("${DogsSpreedDetailsRoute.tag}/$breedId")
+                    breedId ->
+                    navController.navigate("${Route.DogsSpreedDetailsRoute.tag}/$breedId")
                 }
             )
         }
 
-        composable(route = "${DogsSpreedDetailsRoute.tag}/{breedId}",
-            arguments = listOf(navArgument("breedId") { type = NavType.IntType })){
-                navBackStackEntry ->
+        composable(
+            route = "${Route.DogsSpreedDetailsRoute.tag}/{breedId}",
+            arguments = listOf(navArgument("breedId") { type = NavType.IntType })
+        ) {
+            navBackStackEntry ->
             navBackStackEntry.arguments?.getInt("breedId")?.let { breedId ->
                 DetailsScreen(
                     breedId = breedId,
