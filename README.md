@@ -20,7 +20,7 @@ Jetpack Compose make UI designing process smooth
 <!-- You can add more screenshots here if you like -->
 <img src="/results/screenshot1.jpg" width="260">&emsp;<img src="/results/screenshot2.jpg" width="260">
 <br />
-<img src="/results/video.mp4" width="260">
+<img src="/results/video.gif" width="260">
 
 ## License
 ```
